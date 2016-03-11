@@ -7,6 +7,7 @@ RUN apk update &&\
     rm -rf /var/cache/apk/*
 RUN mkdir /etc/dropbear
 RUN touch /var/log/lastlog
+RUN echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["dropbear", "-RFEmwg", "-p", "22"]
