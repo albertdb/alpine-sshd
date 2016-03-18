@@ -17,5 +17,5 @@ adduser -D ${USER} && echo "${USER}:${PASSWORD}" | chpasswd
 adduser ${USER} wheel
 echo "Fixing permissions for user ${USER}"
 chown -R ${USER}:${USER} /home/${USER}
-supervisord
+/bin/s6-svscan /etc/s6 &
 exec "$@"
